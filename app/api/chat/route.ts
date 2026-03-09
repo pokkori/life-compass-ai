@@ -3,6 +3,19 @@ import Anthropic from "@anthropic-ai/sdk";
 
 export const dynamic = "force-dynamic";
 
+const FREE_LIMIT = 3;
+const COOKIE_KEY = "lifecompass_msg_count";
+
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimit.get(ip);
+  if (!entry || now > entry.resetAt) { rateLimit.set(ip, { count: 1, resetAt: now + 60000 }); return true; }
+  if (entry.count >= 20) return false;
+  entry.count++;
+  return true;
+}
+
 const SYSTEM_PROMPT = `You are LifeCompass, an AI thinking partner that helps people gain clarity on major life decisions.
 
 Your role is NOT to give advice or tell people what to do. Your role is to ask thoughtful, probing questions that help people discover what they truly want and think clearly about their situation.
@@ -41,6 +54,18 @@ function getAnthropicClient() {
 }
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  }
+
+  const isPremium = req.cookies.get("lifecompass_premium")?.value === "1";
+  const cookieCount = parseInt(req.cookies.get(COOKIE_KEY)?.value ?? "0");
+
+  if (!isPremium && cookieCount >= FREE_LIMIT) {
+    return NextResponse.json({ error: "LIMIT_REACHED" }, { status: 429 });
+  }
+
   const { messages } = await req.json() as { messages: Message[] };
 
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -49,7 +74,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const client = getAnthropicClient();
-    const response = await client.messages.create({
+    const aiResponse = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 300,
       system: SYSTEM_PROMPT,
@@ -59,8 +84,15 @@ export async function POST(req: NextRequest) {
       })),
     });
 
-    const content = response.content[0].type === "text" ? response.content[0].text : "";
-    return NextResponse.json({ content });
+    const content = aiResponse.content[0].type === "text" ? aiResponse.content[0].text : "";
+    const newCount = cookieCount + 1;
+    const res = NextResponse.json({ content, count: newCount });
+    if (!isPremium) {
+      res.cookies.set(COOKIE_KEY, String(newCount), {
+        maxAge: 60 * 60 * 24 * 30, sameSite: "lax", httpOnly: true, secure: true,
+      });
+    }
+    return res;
   } catch (err) {
     console.error("Chat API error:", err);
     return NextResponse.json({ error: "AI unavailable" }, { status: 500 });
