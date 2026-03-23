@@ -154,6 +154,15 @@ export default function ChatPage() {
           {premium && (
             <span className="text-amber-400 text-sm font-medium">✓ Premium</span>
           )}
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("LifeCompass AIで人生の決断を整理中。ソクラテス式AIコーチが問いかけで思考をクリアにしてくれる✨ #LifeCompassAI https://lifecompass-ai.vercel.app")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LifeCompass AIを使ったことをXにシェアする"
+            className="text-stone-500 hover:text-stone-300 text-xs transition-colors px-2 py-1 border border-stone-700/50 rounded-lg hover:border-stone-500/50"
+          >
+            Xシェア
+          </a>
         </div>
       </header>
 
@@ -177,7 +186,7 @@ export default function ChatPage() {
                 <button
                   key={p}
                   onClick={() => sendMessage(p)}
-                  aria-label={`Start conversation: "${p}"`}
+                  aria-label={`${p}を相談として入力する`}
                   className="border border-stone-700 hover:border-amber-500 hover:text-amber-400 text-stone-400 text-sm px-4 py-3 rounded-xl text-left transition-colors"
                 >
                   &ldquo;{p}&rdquo;
@@ -200,7 +209,7 @@ export default function ChatPage() {
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                 m.role === "user"
                   ? "bg-amber-500 text-stone-950 font-medium"
-                  : "bg-stone-800 text-stone-100"
+                  : "backdrop-blur-sm bg-stone-800/80 border border-stone-700/50 text-stone-100"
               }`}
             >
               {m.content}
@@ -250,6 +259,7 @@ export default function ChatPage() {
             </div>
             <Link
               href="/api/stripe/checkout"
+              aria-label="プレミアムプランを購入して無制限に利用する（月$9.99）"
               className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-3 rounded-full transition-colors mb-3"
             >
               Get Premium — $9.99/month →
@@ -274,7 +284,7 @@ export default function ChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={canChat ? "Tell me what's on your mind..." : "Upgrade to continue..."}
-            aria-label="Type your message to LifeCompass AI"
+            aria-label="LifeCompass AIに相談内容を入力する"
             disabled={loading || !canChat}
             rows={1}
             className="flex-1 bg-stone-800 border border-stone-700 focus:border-amber-500 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm resize-none outline-none transition-colors disabled:opacity-50"
@@ -288,7 +298,7 @@ export default function ChatPage() {
           <button
             onClick={() => sendMessage(input)}
             disabled={loading || !input.trim() || !canChat}
-            aria-label="Send message"
+            aria-label="メッセージを送信する"
             className="bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed text-stone-950 font-bold px-5 py-3 rounded-xl transition-colors flex-shrink-0"
           >
             Send

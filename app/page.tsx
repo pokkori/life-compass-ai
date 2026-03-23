@@ -36,8 +36,8 @@ export default function HomePage() {
           LifeCompass AI
         </span>
         <div className="flex items-center gap-4 text-sm text-stone-400">
-          <Link href="#how" className="hover:text-stone-100 transition-colors">How it works</Link>
-          <Link href="/chat" className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold px-4 py-2 rounded-full transition-colors">
+          <Link href="#how" aria-label="使い方セクションへスクロールする" className="hover:text-stone-100 transition-colors">How it works</Link>
+          <Link href="/chat" aria-label="LifeCompass AIを無料で始める" className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold px-4 py-2 rounded-full transition-colors">
             Start free →
           </Link>
         </div>
@@ -57,12 +57,14 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/chat"
+            aria-label="LifeCompass AIで無料で思考を始める"
             className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-8 py-4 rounded-full transition-colors"
           >
             Start thinking — it&apos;s free
           </Link>
           <Link
             href="#how"
+            aria-label="使い方の詳細を見る"
             className="border border-stone-700 hover:border-stone-500 text-stone-300 text-lg px-8 py-4 rounded-full transition-colors"
           >
             See how it works
@@ -140,7 +142,7 @@ export default function HomePage() {
               <li>✓ All decision types</li>
               <li>✓ No credit card needed</li>
             </ul>
-            <Link href="/chat" className="block w-full border border-stone-600 hover:border-stone-400 text-stone-300 py-3 rounded-full font-medium transition-colors">
+            <Link href="/chat" aria-label="無料プランでLifeCompass AIを始める" className="block w-full border border-stone-600 hover:border-stone-400 text-stone-300 py-3 rounded-full font-medium transition-colors">
               Start free
             </Link>
           </div>
@@ -159,6 +161,7 @@ export default function HomePage() {
             </ul>
             <Link
               href="/api/stripe/checkout"
+              aria-label="プレミアムプランを購入する（月$9.99）"
               className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 py-3 rounded-full font-bold transition-colors"
             >
               Get Premium →
@@ -173,6 +176,7 @@ export default function HomePage() {
         <p className="text-stone-400 mb-8">Start your first conversation — no account required.</p>
         <Link
           href="/chat"
+          aria-label="LifeCompass AIで今すぐ無料で思考を整理する"
           className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-10 py-4 rounded-full transition-colors"
         >
           Start thinking for free →
@@ -182,9 +186,9 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="px-6 py-8 border-t border-stone-800 text-center text-stone-600 text-sm">
         <div className="flex flex-wrap justify-center gap-4 mb-3">
-          <Link href="/terms" className="hover:text-stone-400 transition-colors">Terms of Service</Link>
-          <Link href="/privacy" className="hover:text-stone-400 transition-colors">Privacy Policy</Link>
-          <Link href="/legal" className="hover:text-stone-400 transition-colors">特定商取引法に基づく表記</Link>
+          <Link href="/terms" aria-label="利用規約を見る" className="hover:text-stone-400 transition-colors">Terms of Service</Link>
+          <Link href="/privacy" aria-label="プライバシーポリシーを見る" className="hover:text-stone-400 transition-colors">Privacy Policy</Link>
+          <Link href="/legal" aria-label="特定商取引法に基づく表記を見る" className="hover:text-stone-400 transition-colors">特定商取引法に基づく表記</Link>
         </div>
         <p>© 2026 LifeCompass AI. Not a substitute for professional medical, legal, or financial advice.</p>
       </footer>
