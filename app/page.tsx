@@ -120,7 +120,7 @@ export default function HomePage() {
               { label: "Therapy", desc: "$200/hour, weeks of waiting", bad: true },
               { label: "LifeCompass", desc: "Asks the right questions, 24/7", bad: false },
             ].map((x) => (
-              <div key={x.label} className={`rounded-xl p-4 ${x.bad ? "border border-stone-700 text-stone-500" : "border-2 border-amber-500 text-stone-100"}`}>
+              <div key={x.label} className={`rounded-xl p-4 backdrop-blur-sm ${x.bad ? "border border-stone-700 text-stone-500 bg-stone-900/20" : "border-2 border-amber-500 text-stone-100 bg-amber-500/5"}`}>
                 <div className="font-semibold mb-1">{x.label}</div>
                 <div className="text-sm">{x.desc}</div>
               </div>
@@ -134,7 +134,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
         <p className="text-stone-400 mb-10">Start free. Upgrade when you&apos;re ready.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="border border-stone-700 rounded-2xl p-8">
+          <div className="backdrop-blur-sm bg-stone-900/40 border border-stone-700/60 rounded-2xl p-8">
             <h3 className="font-semibold text-lg mb-2">Free</h3>
             <p className="text-4xl font-bold mb-4">$0</p>
             <ul className="text-stone-400 text-sm space-y-2 mb-6">
@@ -146,7 +146,7 @@ export default function HomePage() {
               Start free
             </Link>
           </div>
-          <div className="border-2 border-amber-500 rounded-2xl p-8 relative">
+          <div className="backdrop-blur-sm bg-amber-500/5 border-2 border-amber-500 rounded-2xl p-8 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-stone-950 text-xs font-bold px-3 py-1 rounded-full">
               MOST POPULAR
             </div>
