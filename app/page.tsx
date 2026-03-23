@@ -78,7 +78,7 @@ export default function HomePage() {
         <h2 className="text-center text-2xl font-semibold mb-10 text-stone-300">People use LifeCompass when they&apos;re facing...</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {SCENARIOS.map((s) => (
-            <div key={s.title} className="bg-stone-900 border border-stone-800 rounded-2xl p-6">
+            <div key={s.title} className="backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg rounded-2xl p-6">
               <div className="mb-3">{s.icon}</div>
               <h3 className="font-semibold text-stone-100 mb-1">{s.title}</h3>
               <p className="text-stone-400 text-sm">{s.body}</p>
@@ -181,6 +181,21 @@ export default function HomePage() {
         >
           Start thinking for free →
         </Link>
+      </section>
+
+      {/* X Share */}
+      <section className="px-6 py-10 text-center">
+        <p className="text-stone-500 text-sm mb-3">Share LifeCompass AI with someone who needs clarity</p>
+        <a
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Just used LifeCompass AI to think through a big life decision. It asks the right questions instead of giving generic advice. Try it free → https://lifecompass-ai.vercel.app #LifeCompassAI #clarity #decision")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share LifeCompass AI on X (Twitter)"
+          className="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-stone-100 border border-stone-700 px-5 py-3 rounded-xl text-sm font-semibold transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share on X
+        </a>
       </section>
 
       {/* Footer */}
