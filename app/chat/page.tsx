@@ -121,8 +121,12 @@ export default function ChatPage() {
     <div className="flex flex-col h-screen bg-stone-950">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 border-b border-stone-800 flex-shrink-0">
-        <Link href="/" className="font-semibold text-stone-300 hover:text-white transition-colors">
-          🧭 LifeCompass AI
+        <Link href="/" className="font-semibold text-stone-300 hover:text-white transition-colors flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-amber-400" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-5.414V7h2v5.586l3.707 3.707-1.414 1.414L11 14.414z"/>
+            <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm.5 4.5 4 8-8-4 8-4zm-.5 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+          </svg>
+          LifeCompass AI
         </Link>
         <div className="flex items-center gap-3">
           {!premium && (
@@ -140,7 +144,13 @@ export default function ChatPage() {
       <div className="flex-1 overflow-y-auto px-4 py-6 space-y-6 max-w-3xl mx-auto w-full">
         {messages.length === 0 && (
           <div className="text-center pt-8">
-            <div className="text-5xl mb-4">🧭</div>
+            <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-stone-950" aria-hidden="true">
+                <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3z" clipRule="evenodd"/>
+              </svg>
+            </div>
+          </div>
             <h2 className="text-2xl font-bold text-stone-100 mb-2">What&apos;s on your mind?</h2>
             <p className="text-stone-400 mb-8">
               Tell me about a decision you&apos;re facing. I&apos;ll ask questions to help you find clarity.
@@ -163,8 +173,10 @@ export default function ChatPage() {
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             {m.role === "assistant" && (
-              <div className="w-8 h-8 rounded-full bg-amber-500 text-stone-950 font-bold text-sm flex items-center justify-center flex-shrink-0 mt-1 mr-3">
-                🧭
+              <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center flex-shrink-0 mt-1 mr-3" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-stone-950">
+                  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3z" clipRule="evenodd"/>
+                </svg>
               </div>
             )}
             <div
@@ -181,8 +193,10 @@ export default function ChatPage() {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="w-8 h-8 rounded-full bg-amber-500 text-stone-950 font-bold text-sm flex items-center justify-center flex-shrink-0 mt-1 mr-3">
-              🧭
+            <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center flex-shrink-0 mt-1 mr-3" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-stone-950">
+                <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3z" clipRule="evenodd"/>
+              </svg>
             </div>
             <div className="bg-stone-800 px-4 py-3 rounded-2xl">
               <div className="flex gap-1">
@@ -201,7 +215,13 @@ export default function ChatPage() {
       {showPaywall && (
         <div className="fixed inset-0 bg-stone-950/90 backdrop-blur-sm flex items-center justify-center z-50 px-4">
           <div className="bg-stone-900 border border-stone-700 rounded-2xl p-8 max-w-md w-full text-center">
-            <div className="text-4xl mb-4">🧭</div>
+            <div className="flex justify-center mb-4">
+              <div className="w-14 h-14 rounded-full bg-amber-500 flex items-center justify-center" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-stone-950">
+                  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3z" clipRule="evenodd"/>
+                </svg>
+              </div>
+            </div>
             <h2 className="text-2xl font-bold mb-2">You&apos;ve used your free sessions</h2>
             <p className="text-stone-400 mb-6">
               Upgrade to Premium to continue your conversation and get unlimited access.

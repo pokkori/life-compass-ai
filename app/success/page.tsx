@@ -39,7 +39,21 @@ function SuccessContent() {
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="text-center max-w-md">
-        <div className="text-6xl mb-6">{verified ? "🧭" : "⚠️"}</div>
+        <div className="flex justify-center mb-6">
+          {verified ? (
+            <div className="w-20 h-20 rounded-full bg-amber-500 flex items-center justify-center" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-11 h-11 text-stone-950">
+                <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3z" clipRule="evenodd"/>
+              </svg>
+            </div>
+          ) : (
+            <div className="w-20 h-20 rounded-full bg-stone-700 flex items-center justify-center" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-11 h-11 text-amber-400">
+                <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z" clipRule="evenodd"/>
+              </svg>
+            </div>
+          )}
+        </div>
         <h1 className="text-3xl font-bold mb-4">
           {verified ? "Welcome to Premium!" : "Something went wrong"}
         </h1>

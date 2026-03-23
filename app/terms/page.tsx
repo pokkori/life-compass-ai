@@ -14,7 +14,12 @@ export default function TermsPage() {
       <div className="space-y-8 text-stone-300 leading-relaxed">
 
         <section className="bg-stone-900 border border-amber-500/30 rounded-xl p-5">
-          <h2 className="text-amber-400 font-semibold mb-2">⚠️ Important Disclaimer</h2>
+          <h2 className="text-amber-400 font-semibold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 flex-shrink-0" aria-hidden="true">
+              <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z" clipRule="evenodd"/>
+            </svg>
+            Important Disclaimer
+          </h2>
           <p className="text-stone-300">
             LifeCompass AI is a <strong>thinking tool</strong>, not a mental health service or professional advisor.
             It is not a substitute for therapy, counseling, medical advice, legal advice, or financial advice.
