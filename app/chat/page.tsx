@@ -150,6 +150,7 @@ export default function ChatPage() {
                 <button
                   key={p}
                   onClick={() => sendMessage(p)}
+                  aria-label={`Start conversation: "${p}"`}
                   className="border border-stone-700 hover:border-amber-500 hover:text-amber-400 text-stone-400 text-sm px-4 py-3 rounded-xl text-left transition-colors"
                 >
                   &ldquo;{p}&rdquo;
@@ -218,6 +219,7 @@ export default function ChatPage() {
             </Link>
             <button
               onClick={() => setShowPaywall(false)}
+              aria-label="Close paywall and continue"
               className="text-stone-500 hover:text-stone-400 text-sm transition-colors"
             >
               Maybe later
@@ -235,6 +237,7 @@ export default function ChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={canChat ? "Tell me what's on your mind..." : "Upgrade to continue..."}
+            aria-label="Type your message to LifeCompass AI"
             disabled={loading || !canChat}
             rows={1}
             className="flex-1 bg-stone-800 border border-stone-700 focus:border-amber-500 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm resize-none outline-none transition-colors disabled:opacity-50"
@@ -248,6 +251,7 @@ export default function ChatPage() {
           <button
             onClick={() => sendMessage(input)}
             disabled={loading || !input.trim() || !canChat}
+            aria-label="Send message"
             className="bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed text-stone-950 font-bold px-5 py-3 rounded-xl transition-colors flex-shrink-0"
           >
             Send
