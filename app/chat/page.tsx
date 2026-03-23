@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { updateStreak, loadStreak, getStreakMilestoneMessage, type StreakData } from "@/lib/streak";
 
 interface Message {
   role: "user" | "assistant";
@@ -47,12 +48,15 @@ export default function ChatPage() {
   const [premium, setPremium] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
   const [userMessageCount, setUserMessageCount] = useState(0);
+  const [streak, setStreak] = useState<StreakData | null>(null);
+  const [streakMsg, setStreakMsg] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     setSessionCount(getSessionCount());
     setPremium(isPremium());
+    setStreak(loadStreak("lifecompass"));
   }, []);
 
   useEffect(() => {
@@ -82,6 +86,11 @@ export default function ChatPage() {
     if (messages.length === 0) {
       incrementSession();
       setSessionCount(getSessionCount());
+      // ストリーク更新
+      const s = updateStreak("lifecompass");
+      setStreak(s);
+      const msg = getStreakMilestoneMessage(s.count);
+      if (msg) setStreakMsg(msg);
     }
 
     try {
@@ -129,6 +138,14 @@ export default function ChatPage() {
           LifeCompass AI
         </Link>
         <div className="flex items-center gap-3">
+          {streak && streak.count > 0 && (
+            <span className="text-amber-400 text-xs font-medium" aria-label={`${streak.count}日連続利用中`}>
+              {streak.count}day streak
+            </span>
+          )}
+          {streakMsg && (
+            <span className="text-orange-400 text-xs animate-bounce">{streakMsg}</span>
+          )}
           {!premium && (
             <span className="text-stone-500 text-sm">
               {Math.max(0, FREE_LIMIT - userMessageCount)} free messages left
