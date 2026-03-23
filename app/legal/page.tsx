@@ -1,12 +1,11 @@
 import Link from "next/link";
 
-// TODO: 以下の情報を実際の情報に置き換えてください
 const BUSINESS_INFO = {
-  name: "【事業者名・屋号を入力】",
-  representative: "【代表者氏名を入力】",
-  address: "【都道府県・市区町村・番地を入力】",
-  phone: "【電話番号を入力】",
-  email: "support@lifecompassai.com",
+  name: "新美諭",
+  representative: "ポッコリラボ",
+  address: "請求があれば遅滞なく開示します",
+  phone: "090-6093-5290",
+  email: "levonadesign@gmail.com（X: @levona_design）",
   price: "$9.99/月（約¥1,500/月）または $49.99/年（約¥7,500/年）",
   billingCycle: "月次または年次（自動更新）",
   paymentMethod: "クレジットカード（Stripe経由）",
