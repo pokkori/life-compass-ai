@@ -36,13 +36,7 @@ Question techniques to use (vary them):
 - "What does the hesitation feel like — fear, intuition, or something else?"
 - "If you knew the outcome would work out, what would you choose?"
 - "What's the version of you that makes this decision — what does that person value?"
-- "What are you most afraid of being honest about here?"
-
-Start the conversation by acknowledging what they've shared, then ask one targeted opening question.
-
-Language: Match the user's language. If they write in Japanese, respond in Japanese. If English, respond in English.
-
-IMPORTANT: This is a thinking tool, not therapy. If the conversation becomes clinical or the user needs real psychological support, gently note that LifeCompass is a thinking tool and suggest speaking with a professional.`;
+- "What are you most afraid of being honest about here?"`;
 
 interface Message {
   role: "user" | "assistant";
@@ -50,7 +44,7 @@ interface Message {
 }
 
 function getAnthropicClient() {
-  return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
 }
 
 export async function POST(req: NextRequest) {
@@ -74,7 +68,9 @@ export async function POST(req: NextRequest) {
 
   try {
     const client = getAnthropicClient();
-    const aiResponse = await client.messages.create({
+    const newCount = cookieCount + 1;
+
+    const stream = await client.messages.stream({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 300,
       system: SYSTEM_PROMPT,
@@ -84,15 +80,36 @@ export async function POST(req: NextRequest) {
       })),
     });
 
-    const content = aiResponse.content[0].type === "text" ? aiResponse.content[0].text : "";
-    const newCount = cookieCount + 1;
-    const res = NextResponse.json({ content, count: newCount });
+    const encoder = new TextEncoder();
+    const readable = new ReadableStream({
+      async start(controller) {
+        for await (const chunk of stream) {
+          if (
+            chunk.type === "content_block_delta" &&
+            chunk.delta.type === "text_delta"
+          ) {
+            controller.enqueue(encoder.encode(chunk.delta.text));
+          }
+        }
+        controller.close();
+      },
+    });
+
+    const response = new Response(readable, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "X-Message-Count": String(newCount),
+      },
+    });
+
     if (!isPremium) {
-      res.cookies.set(COOKIE_KEY, String(newCount), {
-        maxAge: 60 * 60 * 24 * 30, sameSite: "lax", httpOnly: true, secure: true,
-      });
+      response.headers.set(
+        "Set-Cookie",
+        `${COOKIE_KEY}=${newCount}; Path=/; Max-Age=${60 * 60 * 24 * 30}; SameSite=Lax; Secure; HttpOnly`
+      );
     }
-    return res;
+
+    return response;
   } catch (err) {
     console.error("Chat API error:", err);
     return NextResponse.json({ error: "AI unavailable" }, { status: 500 });

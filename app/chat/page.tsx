@@ -100,10 +100,32 @@ export default function ChatPage() {
         body: JSON.stringify({ messages: newMessages }),
       });
 
-      if (!res.ok) throw new Error("API error");
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        if (res.status === 429 && (errData as { error?: string }).error === "LIMIT_REACHED") {
+          setShowPaywall(true);
+          setLoading(false);
+          return;
+        }
+        throw new Error("API error");
+      }
 
-      const data = await res.json();
-      setMessages([...newMessages, { role: "assistant", content: data.content }]);
+      // Streaming response
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = "";
+
+      // Add empty assistant message to start streaming into
+      setMessages([...newMessages, { role: "assistant", content: "" }]);
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          accumulated += decoder.decode(value, { stream: true });
+          setMessages([...newMessages, { role: "assistant", content: accumulated }]);
+        }
+      }
 
       // Show paywall after free limit reached
       if (!premium && newCount >= FREE_LIMIT) {
