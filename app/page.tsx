@@ -120,7 +120,7 @@ export default function HomePage() {
               { label: "Therapy", desc: "$200/hour, weeks of waiting", bad: true },
               { label: "LifeCompass", desc: "Asks the right questions, 24/7", bad: false },
             ].map((x) => (
-              <div key={x.label} className={`rounded-xl p-4 backdrop-blur-sm ${x.bad ? "border border-stone-700 text-stone-500 bg-stone-900/20" : "border-2 border-amber-500 text-stone-100 bg-amber-500/5"}`}>
+              <div key={x.label} className={`rounded-xl p-4 backdrop-blur-sm ${x.bad ? "border border-white/10 text-stone-500 bg-white/5" : "border-2 border-amber-500 text-stone-100 bg-amber-500/10"}`}>
                 <div className="font-semibold mb-1">{x.label}</div>
                 <div className="text-sm">{x.desc}</div>
               </div>
@@ -134,19 +134,28 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
         <p className="text-stone-400 mb-10">Start free. Upgrade when you&apos;re ready.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="backdrop-blur-sm bg-stone-900/40 border border-stone-700/60 rounded-2xl p-8">
+          <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-2xl p-8">
             <h3 className="font-semibold text-lg mb-2">Free</h3>
             <p className="text-4xl font-bold mb-4">$0</p>
             <ul className="text-stone-400 text-sm space-y-2 mb-6">
-              <li>✓ 3 full conversations</li>
-              <li>✓ All decision types</li>
-              <li>✓ No credit card needed</li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                3 full conversations
+              </li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                All decision types
+              </li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                No credit card needed
+              </li>
             </ul>
-            <Link href="/chat" aria-label="無料プランでLifeCompass AIを始める" className="block w-full border border-stone-600 hover:border-stone-400 text-stone-300 py-3 rounded-full font-medium transition-colors">
+            <Link href="/chat" aria-label="無料プランでLifeCompass AIを始める" className="block w-full border border-stone-600 hover:border-stone-400 text-stone-300 py-3 rounded-full font-medium transition-colors text-center">
               Start free
             </Link>
           </div>
-          <div className="backdrop-blur-sm bg-amber-500/5 border-2 border-amber-500 rounded-2xl p-8 relative">
+          <div className="backdrop-blur-sm bg-amber-500/10 border-2 border-amber-500 rounded-2xl p-8 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-stone-950 text-xs font-bold px-3 py-1 rounded-full">
               MOST POPULAR
             </div>
@@ -154,10 +163,22 @@ export default function HomePage() {
             <p className="text-4xl font-bold mb-1">$9.99<span className="text-lg font-normal text-stone-400">/mo</span></p>
             <p className="text-stone-500 text-sm mb-4">or $49.99/year (save 58%)</p>
             <ul className="text-stone-300 text-sm space-y-2 mb-6">
-              <li>✓ Unlimited conversations</li>
-              <li>✓ Conversation history</li>
-              <li>✓ All decision types</li>
-              <li>✓ Priority support</li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                Unlimited conversations
+              </li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                Conversation history
+              </li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                All decision types
+              </li>
+              <li className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
+                Priority support
+              </li>
             </ul>
             <Link
               href="/api/stripe/checkout"

@@ -64,6 +64,7 @@ function SuccessContent() {
         </p>
         <Link
           href="/chat"
+          aria-label={verified ? "チャットを開始してLifeCompass AIを無制限に使う" : "チャットページに戻る"}
           className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold px-8 py-4 rounded-full transition-colors"
         >
           {verified ? "Start your unlimited journey →" : "Back to chat"}
