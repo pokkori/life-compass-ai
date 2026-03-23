@@ -2,6 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const SITE_URL = "https://lifecompass-ai.vercel.app";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LifeCompass AI",
+  "description": "When you're at a crossroads — career, relationships, where to live — LifeCompass AI helps you think it through with structured AI-guided reflection.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "url": SITE_URL,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "inLanguage": "en",
+};
 const TITLE = "LifeCompass AI — Your AI Thinking Partner for Life's Big Decisions";
 const DESC =
   "When you're at a crossroads — career, relationships, where to live — LifeCompass AI helps you think it through. Not advice, not therapy. Just the right questions.";
@@ -34,6 +46,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-stone-950 text-stone-100 antialiased">{children}</body>
     </html>
   );
