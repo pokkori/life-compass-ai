@@ -1,0 +1,12 @@
+# LifeCompass AI
+An AI thinking partner that helps you work through life's big decisions with structured, reflective questioning
+
+## Service Overview
+- Target Users: People at a crossroads — facing career changes, relationship decisions, relocation choices, or other major life transitions
+- Key Features: AI-guided structured reflection, thoughtful questioning to clarify values and priorities, decision framework support
+- Pricing: Free to use
+- URL: https://lifecompass-ai.vercel.app
+
+## Main FAQ
+Q: What is LifeCompass AI and how does it help with decisions?
+A: LifeCompass AI is an AI thinking partner for life's big decisions. When you're at a crossroads — career change, relationship question, where to live — it helps you think it through by asking the right questions and guiding structured reflection. It's not advice, not therapy. Just clear thinking to help you find your own answer. Free to use, no registration required.
