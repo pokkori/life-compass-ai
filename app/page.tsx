@@ -12,16 +12,16 @@ const SCENARIO_ICONS = [
 ];
 
 const SCENARIOS = [
-  { icon: SCENARIO_ICONS[0], title: "Career crossroads", body: "Should I quit my job? Is this the right move?" },
-  { icon: SCENARIO_ICONS[1], title: "Relationship decisions", body: "Stay or go? How do I know what I really want?" },
-  { icon: SCENARIO_ICONS[2], title: "Life changes", body: "Move to a new city? Start over? What's holding me back?" },
-  { icon: SCENARIO_ICONS[3], title: "Purpose & direction", body: "What do I actually want from life? Why does nothing feel right?" },
+  { icon: SCENARIO_ICONS[0], title: "転職・キャリアの岐路", body: "今の仕事をやめるべきか？本当にやりたいことは何か？" },
+  { icon: SCENARIO_ICONS[1], title: "恋愛・人間関係の判断", body: "続けるべきか離れるべきか？自分が本当に望むものは？" },
+  { icon: SCENARIO_ICONS[2], title: "ライフスタイルの変化", body: "新しい環境に移るべきか？何が自分を引き留めているのか？" },
+  { icon: SCENARIO_ICONS[3], title: "目的・方向性の模索", body: "人生で本当に求めるものは何か？なぜ何もしっくりこないのか？" },
 ];
 
 const STEPS = [
-  { n: "1", title: "Tell me what's on your mind", body: "Start a conversation. No forms, no intake questionnaires — just talk." },
-  { n: "2", title: "I ask the right questions", body: "LifeCompass doesn't give answers. It asks questions that help you discover your own." },
-  { n: "3", title: "You gain clarity", body: "Most people know what they want. They just need space to hear themselves think." },
+  { n: "1", title: "今の悩みを話す", body: "会話を始めるだけ。フォームも問診票も不要 — ただ話しかけてください。" },
+  { n: "2", title: "AIが適切な質問をする", body: "LifeCompass AIは答えを出しません。あなた自身が答えを見つけるための質問をします。" },
+  { n: "3", title: "思考が整理される", body: "多くの人はすでに答えを知っています。ただ、自分の声を聴く場所が必要なだけです。" },
 ];
 
 export default function HomePage() {
@@ -36,23 +36,24 @@ export default function HomePage() {
           LifeCompass AI
         </span>
         <div className="flex items-center gap-4 text-sm text-stone-400">
-          <Link href="#how" aria-label="使い方セクションへスクロールする" className="hover:text-stone-100 transition-colors">How it works</Link>
+          <Link href="#how" aria-label="使い方セクションへスクロールする" className="hover:text-stone-100 transition-colors">使い方</Link>
           <Link href="/chat" aria-label="LifeCompass AIを無料で始める" className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold px-4 py-2 rounded-full transition-colors">
-            Start free →
+            無料で始める →
           </Link>
         </div>
       </nav>
 
       {/* Hero */}
       <section className="text-center px-6 pt-20 pb-16 max-w-3xl mx-auto">
-        <p className="text-amber-400 text-sm font-medium tracking-widest uppercase mb-4">AI Thinking Partner</p>
+        <p className="text-amber-400 text-sm font-medium tracking-widest uppercase mb-4">AI 思考パートナー</p>
         <h1 className="text-5xl font-bold leading-tight mb-6">
-          You already know the answer.<br />
-          <span className="text-amber-400">You just can&apos;t hear yourself.</span>
+          答えはすでにあなたの中にある。<br />
+          <span className="text-amber-400">ただ、声が聞こえていないだけ。</span>
         </h1>
         <p className="text-stone-400 text-xl leading-relaxed mb-10">
-          LifeCompass AI helps you think through life&apos;s big decisions — career, relationships, where to live, what to pursue — using the power of the right questions.
-          <br /><span className="text-stone-500">Not therapy. Not advice. Just clarity.</span>
+          LifeCompass AIは、キャリア・恋愛・転居・夢の追求など、人生の大きな決断を整理するお手伝いをします。
+          適切な質問の力を使って。
+          <br /><span className="text-stone-500">療法でもアドバイスでもない。ただの思考整理。</span>
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
@@ -60,25 +61,25 @@ export default function HomePage() {
             aria-label="LifeCompass AIで無料で思考を始める"
             className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-8 py-4 rounded-full transition-colors"
           >
-            Start thinking — it&apos;s free
+            今すぐ考える — 無料
           </Link>
           <Link
             href="#how"
             aria-label="使い方の詳細を見る"
             className="border border-stone-700 hover:border-stone-500 text-stone-300 text-lg px-8 py-4 rounded-full transition-colors"
           >
-            See how it works
+            使い方を見る
           </Link>
         </div>
-        <p className="text-stone-600 text-sm mt-4">First 3 conversations free. No credit card needed.</p>
+        <p className="text-stone-600 text-sm mt-4">最初の3回の会話は無料。クレジットカード不要。</p>
       </section>
 
       {/* Scenarios */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-center text-2xl font-semibold mb-10 text-stone-300">People use LifeCompass when they&apos;re facing...</h2>
+        <h2 className="text-center text-2xl font-semibold mb-10 text-stone-300">こんな場面でLifeCompassが役立ちます</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {SCENARIOS.map((s) => (
-            <div key={s.title} className="backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg rounded-2xl p-6">
+            <div key={s.title} style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px' }} className="shadow-lg p-6">
               <div className="mb-3">{s.icon}</div>
               <h3 className="font-semibold text-stone-100 mb-1">{s.title}</h3>
               <p className="text-stone-400 text-sm">{s.body}</p>
@@ -89,7 +90,7 @@ export default function HomePage() {
 
       {/* How it works */}
       <section id="how" className="px-6 py-16 max-w-3xl mx-auto">
-        <h2 className="text-center text-3xl font-bold mb-12">How it works</h2>
+        <h2 className="text-center text-3xl font-bold mb-12">使い方</h2>
         <div className="space-y-8">
           {STEPS.map((s) => (
             <div key={s.n} className="flex gap-6">
@@ -108,19 +109,19 @@ export default function HomePage() {
       {/* Differentiator */}
       <section className="px-6 py-16 bg-stone-900 border-y border-stone-800">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">This is not ChatGPT.</h2>
+          <h2 className="text-3xl font-bold mb-6">ChatGPTとは違います。</h2>
           <p className="text-stone-400 text-lg leading-relaxed">
-            ChatGPT gives you answers. LifeCompass asks questions. There&apos;s a big difference.
-            When it&apos;s your life, you shouldn&apos;t outsource the decision — you should own it.
-            LifeCompass helps you think, not think for you.
+            ChatGPTは答えを出します。LifeCompassは質問をします。大きな違いがあります。
+            あなた自身の人生の決断を、AIに丸投げするべきではありません。
+            LifeCompassはあなたの代わりに考えるのではなく、あなたが考えるのを助けます。
           </p>
           <div className="mt-10 grid grid-cols-3 gap-6 text-center">
             {[
-              { label: "ChatGPT", desc: "Gives you answers", bad: true },
-              { label: "Therapy", desc: "$200/hour, weeks of waiting", bad: true },
-              { label: "LifeCompass", desc: "Asks the right questions, 24/7", bad: false },
+              { label: "ChatGPT", desc: "答えを出す", bad: true },
+              { label: "カウンセリング", desc: "高額・予約待ちが必要", bad: true },
+              { label: "LifeCompass", desc: "適切な質問を24時間", bad: false },
             ].map((x) => (
-              <div key={x.label} className={`rounded-xl p-4 backdrop-blur-sm ${x.bad ? "border border-white/10 text-stone-500 bg-white/5" : "border-2 border-amber-500 text-stone-100 bg-amber-500/10"}`}>
+              <div key={x.label} style={x.bad ? { background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' } : { background: 'rgba(245,158,11,0.1)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '2px solid #f59e0b', borderRadius: '12px' }} className={`p-4 ${x.bad ? "text-stone-500" : "text-stone-100"}`}>
                 <div className="font-semibold mb-1">{x.label}</div>
                 <div className="text-sm">{x.desc}</div>
               </div>
@@ -131,61 +132,61 @@ export default function HomePage() {
 
       {/* Pricing */}
       <section className="px-6 py-16 max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
-        <p className="text-stone-400 mb-10">Start free. Upgrade when you&apos;re ready.</p>
+        <h2 className="text-3xl font-bold mb-4">シンプルな料金</h2>
+        <p className="text-stone-400 mb-10">無料で始めて、準備ができたらアップグレード。</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-2xl p-8">
-            <h3 className="font-semibold text-lg mb-2">Free</h3>
-            <p className="text-4xl font-bold mb-4">$0</p>
+          <div style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px' }} className="p-8">
+            <h3 className="font-semibold text-lg mb-2">無料プラン</h3>
+            <p className="text-4xl font-bold mb-4">¥0</p>
             <ul className="text-stone-400 text-sm space-y-2 mb-6">
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                3 full conversations
+                3回分の会話
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                All decision types
+                全テーマ対応
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                No credit card needed
+                クレジットカード不要
               </li>
             </ul>
             <Link href="/chat" aria-label="無料プランでLifeCompass AIを始める" className="block w-full border border-stone-600 hover:border-stone-400 text-stone-300 py-3 rounded-full font-medium transition-colors text-center">
-              Start free
+              無料で始める
             </Link>
           </div>
-          <div className="backdrop-blur-sm bg-amber-500/10 border-2 border-amber-500 rounded-2xl p-8 relative">
+          <div style={{ background: 'rgba(245,158,11,0.1)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '2px solid #f59e0b', borderRadius: '16px' }} className="p-8 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-stone-950 text-xs font-bold px-3 py-1 rounded-full">
-              MOST POPULAR
+              人気プラン
             </div>
-            <h3 className="font-semibold text-lg mb-2">Premium</h3>
-            <p className="text-4xl font-bold mb-1">$9.99<span className="text-lg font-normal text-stone-400">/mo</span></p>
-            <p className="text-stone-500 text-sm mb-4">or $49.99/year (save 58%)</p>
+            <h3 className="font-semibold text-lg mb-2">プレミアム</h3>
+            <p className="text-4xl font-bold mb-1">¥1,480<span className="text-lg font-normal text-stone-400">/月</span></p>
+            <p className="text-stone-500 text-sm mb-4">または ¥7,980/年（34%お得）</p>
             <ul className="text-stone-300 text-sm space-y-2 mb-6">
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                Unlimited conversations
+                無制限の会話
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                Conversation history
+                会話履歴の保存
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                All decision types
+                全テーマ対応
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                Priority support
+                優先サポート
               </li>
             </ul>
             <Link
               href="/api/stripe/checkout"
-              aria-label="プレミアムプランを購入する（月$9.99）"
+              aria-label="プレミアムプランを購入する（月1,480円）"
               className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 py-3 rounded-full font-bold transition-colors"
             >
-              Get Premium →
+              プレミアムを始める →
             </Link>
           </div>
         </div>
@@ -193,20 +194,22 @@ export default function HomePage() {
 
       {/* CTA */}
       <section className="px-6 py-20 text-center bg-stone-900 border-t border-stone-800">
-        <h2 className="text-4xl font-bold mb-4">Ready to get clarity?</h2>
-        <p className="text-stone-400 mb-8">Start your first conversation — no account required.</p>
-        <Link
-          href="/chat"
-          aria-label="LifeCompass AIで今すぐ無料で思考を整理する"
-          className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-10 py-4 rounded-full transition-colors"
-        >
-          Start thinking for free →
-        </Link>
+        <h2 className="text-4xl font-bold mb-4">思考を整理する準備はできていますか？</h2>
+        <p className="text-stone-400 mb-8">最初の会話を始める — アカウント不要。</p>
+        <div style={{ background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px' }} className="shadow-lg p-8 max-w-md mx-auto mb-6">
+          <Link
+            href="/chat"
+            aria-label="LifeCompass AIで今すぐ無料で思考を整理する"
+            className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-10 py-4 rounded-full transition-colors text-center"
+          >
+            今すぐ考える — 無料
+          </Link>
+        </div>
       </section>
 
       {/* X Share */}
       <section className="px-6 py-10 text-center">
-        <p className="text-stone-500 text-sm mb-3">Share LifeCompass AI with someone who needs clarity</p>
+        <p className="text-stone-500 text-sm mb-3">思考整理が必要な人にLifeCompass AIをシェア</p>
         <a
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Just used LifeCompass AI to think through a big life decision. It asks the right questions instead of giving generic advice. Try it free → https://lifecompass-ai.vercel.app #LifeCompassAI #clarity #decision")}`}
           target="_blank"
