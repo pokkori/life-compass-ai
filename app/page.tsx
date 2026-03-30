@@ -4,6 +4,7 @@ import { AdBanner } from "@/components/AdBanner";
 import { StreakBanner } from "@/components/StreakBanner";
 import { UsageCounter } from "@/components/UsageCounter";
 import { CrossSell } from "@/components/CrossSell";
+import { TrustBadge } from "@/components/TrustBadge";
 
 const SCENARIO_ICONS = [
   // Briefcase icon for Career
@@ -95,6 +96,7 @@ export default function HomePage() {
           <br /><span className="text-stone-500">療法でもアドバイスでもない。ただの思考整理。</span>
         </p>
         <div className="max-w-xs mx-auto mb-4"><UsageCounter /></div>
+        <div className="mb-4"><TrustBadge /></div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/chat"
