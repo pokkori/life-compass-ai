@@ -1,12 +1,22 @@
 # LifeCompass AI
-An AI thinking partner that helps you work through life's big decisions with structured, reflective questioning
 
-## Service Overview
-- Target Users: People at a crossroads — facing career changes, relationship decisions, relocation choices, or other major life transitions
-- Key Features: AI-guided structured reflection, thoughtful questioning to clarify values and priorities, decision framework support
-- Pricing: Free to use
-- URL: https://lifecompass-ai.vercel.app
+> キャリア・恋愛・転居・人生の大きな決断をソクラテス式AI対話で整理する思考パートナー
 
-## Main FAQ
-Q: What is LifeCompass AI and how does it help with decisions?
-A: LifeCompass AI is an AI thinking partner for life's big decisions. When you're at a crossroads — career change, relationship question, where to live — it helps you think it through by asking the right questions and guiding structured reflection. It's not advice, not therapy. Just clear thinking to help you find your own answer. Free to use, no registration required.
+## About
+キャリア・恋愛・転居・人生の岐路に立ったとき、LifeCompass AIがソクラテス式対話で思考をクリアにします。アドバイスではなく「適切な問い」を投げかけることで、あなた自身が答えを見つけられます。カウンセリングや心理療法の代替ではなく、思考整理のためのAIツールです。
+
+## Features
+- ソクラテス式対話: 答えを出すのではなく、適切な問いで思考を整理
+- マルチテーマ対応: 転職・キャリア・恋愛・人間関係・引っ越し・人生の方向性
+- 会話履歴保存: プレミアムプランでは会話履歴を保存・振り返り可能
+- 即時利用: 登録不要でブラウザから即座に利用開始
+
+## Pricing
+- 無料プラン: 1日5回まで（登録不要）
+- プレミアム: ¥980/月
+
+## Links
+- [ホーム](https://lifecompass-ai.vercel.app)
+- [AI相談チャット](https://lifecompass-ai.vercel.app/chat)
+- [利用規約](https://lifecompass-ai.vercel.app/legal)
+- [プライバシーポリシー](https://lifecompass-ai.vercel.app/privacy)
