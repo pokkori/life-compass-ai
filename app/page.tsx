@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ShareButtons } from "@/components/ShareButtons";
 import { AdBanner } from "@/components/AdBanner";
+import { StreakBanner } from "@/components/StreakBanner";
+import { UsageCounter } from "@/components/UsageCounter";
 
 const SCENARIO_ICONS = [
   // Briefcase icon for Career
@@ -77,6 +79,8 @@ export default function HomePage() {
         </div>
       </nav>
 
+      <StreakBanner />
+
       {/* Hero */}
       <section className="text-center px-6 pt-20 pb-16 max-w-3xl mx-auto">
         <p className="text-amber-400 text-sm font-medium tracking-widest uppercase mb-4">AI 思考パートナー</p>
@@ -89,6 +93,7 @@ export default function HomePage() {
           適切な質問の力を使って。
           <br /><span className="text-stone-500">療法でもアドバイスでもない。ただの思考整理。</span>
         </p>
+        <div className="max-w-xs mx-auto mb-4"><UsageCounter /></div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/chat"
