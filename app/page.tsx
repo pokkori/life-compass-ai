@@ -252,6 +252,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="px-6 py-12" aria-labelledby="faq-heading">
+        <div className="max-w-3xl mx-auto">
+          <h2 id="faq-heading" className="text-2xl font-bold text-stone-100 mb-8 text-center">よくある質問</h2>
+          {[
+            { q: '無料で使えますか？', a: '1日5回まで無料でご利用いただけます。クレジットカード不要・アカウント登録不要です。' },
+            { q: '個人情報は安全ですか？', a: '入力された情報はAI分析のみに使用し、第三者への提供は行いません。SSL暗号化通信で安全に保護されています。' },
+            { q: 'カウンセリングの代わりになりますか？', a: 'LifeCompass AIはカウンセリングや医療の代替ではありません。思考を整理するための対話ツールです。深刻な悩みがある場合は専門家にご相談ください。' },
+            { q: 'ChatGPTとの違いは何ですか？', a: 'ChatGPTは答えを出しますが、LifeCompass AIは適切な質問をします。あなた自身が答えを見つけるための思考パートナーです。' },
+          ].map(({ q, a }) => (
+            <details key={q} className="mb-4 rounded-lg" style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              <summary className="p-4 cursor-pointer text-stone-100 font-medium">{q}</summary>
+              <p className="px-4 pb-4 text-stone-400 text-sm">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              { '@type': 'Question', name: '無料で使えますか？', acceptedAnswer: { '@type': 'Answer', text: '1日5回まで無料でご利用いただけます。クレジットカード不要・アカウント登録不要です。' } },
+              { '@type': 'Question', name: '個人情報は安全ですか？', acceptedAnswer: { '@type': 'Answer', text: '入力された情報はAI分析のみに使用し、第三者への提供は行いません。SSL暗号化通信で安全に保護されています。' } },
+              { '@type': 'Question', name: 'カウンセリングの代わりになりますか？', acceptedAnswer: { '@type': 'Answer', text: 'LifeCompass AIはカウンセリングや医療の代替ではありません。思考を整理するための対話ツールです。深刻な悩みがある場合は専門家にご相談ください。' } },
+              { '@type': 'Question', name: 'ChatGPTとの違いは何ですか？', acceptedAnswer: { '@type': 'Answer', text: 'ChatGPTは答えを出しますが、LifeCompass AIは適切な質問をします。あなた自身が答えを見つけるための思考パートナーです。' } },
+            ],
+          }).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'LifeCompass AI',
+            applicationCategory: 'LifestyleApplication',
+            operatingSystem: 'Web',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+          }).replace(/</g, '\\u003c'),
+        }}
+      />
+
       {/* Share Section */}
       <section className="px-6 py-10 text-center">
         <p className="text-stone-500 text-sm mb-3">Share LifeCompass AI with someone who needs clarity</p>
@@ -267,6 +313,10 @@ export default function HomePage() {
           <Link href="/cancel" aria-label="Cancel subscription" className="hover:text-stone-400 transition-colors">Cancel</Link>
         </div>
         <p>© 2026 LifeCompass AI. Not a substitute for professional medical, legal, or financial advice.</p>
+        <div className="flex items-center justify-center gap-2 text-xs text-stone-600 mt-4">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          SSL Encrypted | Your data is securely protected
+        </div>
       </footer>
       <AdBanner slot="" />
     </main>
