@@ -24,9 +24,41 @@ const STEPS = [
   { n: "3", title: "思考が整理される", body: "多くの人はすでに答えを知っています。ただ、自分の声を聴く場所が必要なだけです。" },
 ];
 
+/* Floating particles via CSS */
+const FloatingParticles = () => (
+  <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    {Array.from({ length: 18 }).map((_, i) => (
+      <div
+        key={i}
+        className="absolute rounded-full opacity-20"
+        style={{
+          width: `${4 + (i % 5) * 2}px`,
+          height: `${4 + (i % 5) * 2}px`,
+          background: i % 3 === 0 ? '#F59E0B' : i % 3 === 1 ? '#D97706' : '#FBBF24',
+          left: `${(i * 17 + 5) % 95}%`,
+          top: `${(i * 23 + 10) % 90}%`,
+          animation: `float-particle ${8 + (i % 6) * 2}s ease-in-out infinite`,
+          animationDelay: `${i * 0.5}s`,
+        }}
+      />
+    ))}
+    <style>{`
+      @keyframes float-particle {
+        0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.15; }
+        25% { transform: translateY(-30px) translateX(10px); opacity: 0.3; }
+        50% { transform: translateY(-15px) translateX(-8px); opacity: 0.2; }
+        75% { transform: translateY(-40px) translateX(5px); opacity: 0.25; }
+      }
+    `}</style>
+  </div>
+);
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" style={{
+      background: 'radial-gradient(ellipse at 20% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(217, 119, 6, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 50%), #0c0a09'
+    }}>
+      <FloatingParticles />
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-5xl mx-auto">
         <span className="font-semibold text-lg tracking-tight flex items-center gap-2">
@@ -48,7 +80,7 @@ export default function HomePage() {
         <p className="text-amber-400 text-sm font-medium tracking-widest uppercase mb-4">AI 思考パートナー</p>
         <h1 className="text-5xl font-bold leading-tight mb-6">
           答えはすでにあなたの中にある。<br />
-          <span className="text-amber-400">ただ、声が聞こえていないだけ。</span>
+          <span style={{ background: 'linear-gradient(135deg, #F59E0B, #D97706, #FBBF24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ただ、声が聞こえていないだけ。</span>
         </h1>
         <p className="text-stone-400 text-xl leading-relaxed mb-10">
           LifeCompass AIは、キャリア・恋愛・転居・夢の追求など、人生の大きな決断を整理するお手伝いをします。
@@ -59,7 +91,12 @@ export default function HomePage() {
           <Link
             href="/chat"
             aria-label="LifeCompass AIで無料で思考を始める"
-            className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-lg px-8 py-4 rounded-full transition-colors"
+            className="font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+              color: '#0c0a09',
+              boxShadow: '0 0 25px rgba(245, 158, 11, 0.4), 0 4px 15px rgba(0,0,0,0.3)',
+            }}
           >
             今すぐ考える — 無料
           </Link>
@@ -71,7 +108,7 @@ export default function HomePage() {
             使い方を見る
           </Link>
         </div>
-        <p className="text-stone-600 text-sm mt-4">最初の3回の会話は無料。クレジットカード不要。</p>
+        <p className="text-stone-600 text-sm mt-4">1日5回まで無料。クレジットカード不要。</p>
       </section>
 
       {/* Scenarios */}
@@ -141,7 +178,7 @@ export default function HomePage() {
             <ul className="text-stone-400 text-sm space-y-2 mb-6">
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                3回分の会話
+                1日5回まで会話
               </li>
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
@@ -161,8 +198,8 @@ export default function HomePage() {
               人気プラン
             </div>
             <h3 className="font-semibold text-lg mb-2">プレミアム</h3>
-            <p className="text-4xl font-bold mb-1">¥1,480<span className="text-lg font-normal text-stone-400">/月</span></p>
-            <p className="text-stone-500 text-sm mb-4">または ¥7,980/年（34%お得）</p>
+            <p className="text-4xl font-bold mb-1">¥980<span className="text-lg font-normal text-stone-400">/月</span></p>
+            <p className="text-stone-500 text-sm mb-4">1日あたり約32円。いつでも解約可。</p>
             <ul className="text-stone-300 text-sm space-y-2 mb-6">
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
@@ -183,19 +220,25 @@ export default function HomePage() {
             </ul>
             <Link
               href="/api/stripe/checkout"
-              aria-label="プレミアムプランを購入する（月1,480円）"
+              aria-label="プレミアムプランを購入する（月額980円）"
               className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 py-3 rounded-full font-bold transition-colors"
             >
-              プレミアムを始める →
+              月額¥980で始める →
             </Link>
+            <div className="mt-4 text-xs text-stone-600 space-y-0.5 text-left">
+              <p>サービス: LifeCompass AI プレミアム（無制限会話・履歴保存）</p>
+              <p>料金: 月額¥980（税込）/ 毎月自動更新</p>
+              <p>解約: マイページから随時解約可</p>
+              <p>返金: デジタルコンテンツのため原則返金不可</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 text-center bg-stone-900 border-t border-stone-800">
+      <section className="px-6 py-20 text-center border-t border-stone-800" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.06) 0%, transparent 60%), #1c1917' }}>
         <h2 className="text-4xl font-bold mb-4">思考を整理する準備はできていますか？</h2>
-        <p className="text-stone-400 mb-8">最初の会話を始める — アカウント不要。</p>
+        <p className="text-stone-400 mb-8">今すぐ無料で始める — アカウント不要・1日5回まで無料。</p>
         <div style={{ background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px' }} className="shadow-lg p-8 max-w-md mx-auto mb-6">
           <Link
             href="/chat"
@@ -209,16 +252,16 @@ export default function HomePage() {
 
       {/* X Share */}
       <section className="px-6 py-10 text-center">
-        <p className="text-stone-500 text-sm mb-3">思考整理が必要な人にLifeCompass AIをシェア</p>
+        <p className="text-stone-500 text-sm mb-3">思考整理が必要な人にLifeCompass AIをシェアする</p>
         <a
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Just used LifeCompass AI to think through a big life decision. It asks the right questions instead of giving generic advice. Try it free → https://lifecompass-ai.vercel.app #LifeCompassAI #clarity #decision")}`}
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("LifeCompass AIで人生の決断を整理中。ソクラテス式AIが答えを出すのではなく「適切な問い」で思考をクリアにしてくれる。1日5回無料 → https://lifecompass-ai.vercel.app #LifeCompassAI #人生相談 #思考整理")}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Share LifeCompass AI on X (Twitter)"
+          aria-label="LifeCompass AIをXにシェアする"
           className="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-stone-100 border border-stone-700 px-5 py-3 rounded-xl text-sm font-semibold transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Share on X
+          Xにシェアする
         </a>
       </section>
 

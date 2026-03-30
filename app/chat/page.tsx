@@ -9,7 +9,7 @@ interface Message {
   content: string;
 }
 
-const FREE_LIMIT = 3; // free messages per session
+const FREE_LIMIT = 5; // free messages per day
 const STORAGE_KEY = "lifecompass_sessions";
 const PREMIUM_KEY = "lifecompass_premium";
 
@@ -34,10 +34,10 @@ function isPremium(): boolean {
 }
 
 const STARTER_PROMPTS = [
-  "I'm thinking about quitting my job but I'm not sure",
-  "I don't know if I should end this relationship",
-  "I feel stuck and don't know what direction to take in life",
-  "I'm considering a big move but scared to commit",
+  "転職しようか迷っているが、踏み出せない",
+  "この恋愛を続けるべきか、終わらせるべきか分からない",
+  "なんとなく停滞感があり、この先の方向性が見えない",
+  "引っ越し・移住を考えているが決断できない",
 ];
 
 export default function ChatPage() {
@@ -169,8 +169,8 @@ export default function ChatPage() {
             <span className="text-orange-400 text-xs animate-bounce">{streakMsg}</span>
           )}
           {!premium && (
-            <span className="text-stone-500 text-sm">
-              {Math.max(0, FREE_LIMIT - userMessageCount)} free messages left
+            <span className="text-stone-500 text-sm" aria-label={`残り無料回数 ${Math.max(0, FREE_LIMIT - userMessageCount)}回`}>
+              残り{Math.max(0, FREE_LIMIT - userMessageCount)}回無料
             </span>
           )}
           {premium && (
@@ -202,17 +202,17 @@ export default function ChatPage() {
               </svg>
             </div>
           </div>
-            <h2 className="text-2xl font-bold text-stone-100 mb-2">What&apos;s on your mind?</h2>
+            <h2 className="text-2xl font-bold text-stone-100 mb-2">何について悩んでいますか？</h2>
             <p className="text-stone-400 mb-8">
-              Tell me about a decision you&apos;re facing. I&apos;ll ask questions to help you find clarity.
+              今直面している決断を話してください。適切な問いで思考をクリアにします。
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl mx-auto">
               {STARTER_PROMPTS.map((p) => (
                 <button
                   key={p}
                   onClick={() => sendMessage(p)}
-                  aria-label={`${p}を相談として入力する`}
-                  className="border border-stone-700 hover:border-amber-500 hover:text-amber-400 text-stone-400 text-sm px-4 py-3 rounded-xl text-left transition-colors"
+                  aria-label={`「${p}」を相談として送信する`}
+                  className="backdrop-blur-sm bg-white/5 border border-stone-700/50 hover:border-amber-500/70 hover:bg-amber-500/10 hover:text-amber-400 text-stone-400 text-sm px-4 py-3 rounded-xl text-left transition-colors"
                 >
                   &ldquo;{p}&rdquo;
                 </button>
@@ -273,37 +273,42 @@ export default function ChatPage() {
                 </svg>
               </div>
             </div>
-            <h2 className="text-2xl font-bold mb-2">You&apos;ve used your free sessions</h2>
-            <p className="text-stone-400 mb-6">
-              Upgrade to Premium to continue your conversation and get unlimited access.
+            <h2 className="text-2xl font-bold mb-2">本日の無料回数を使い切りました</h2>
+            <p className="text-stone-400 mb-2">
+              プレミアムプランで無制限に相談できます。
             </p>
+            <p className="text-amber-400 text-sm font-medium mb-6">1日あたり約32円 — いつでも解約可</p>
             <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 mb-6 text-sm text-stone-300 text-left space-y-2">
               <p className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                Unlimited conversations
+                会話無制限
               </p>
               <p className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                Continue from where you left off
+                会話履歴の保存
               </p>
               <p className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clipRule="evenodd"/></svg>
-                All decision types
+                全テーマ対応（キャリア・恋愛・人生）
               </p>
+            </div>
+            <div className="text-xs text-stone-600 mb-4 text-left space-y-0.5">
+              <p>料金: 月額¥980（税込）/ 毎月自動更新</p>
+              <p>解約: マイページから随時解約可 / 返金: 原則不可</p>
             </div>
             <Link
               href="/api/stripe/checkout"
-              aria-label="プレミアムプランを購入して無制限に利用する（月$9.99）"
-              className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-3 rounded-full transition-colors mb-3"
+              aria-label="月額980円でプレミアムプランに登録して無制限に利用する"
+              className="block w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-3 rounded-full transition-colors mb-3 min-h-[44px] flex items-center justify-center"
             >
-              Get Premium — $9.99/month →
+              月額¥980で始める →
             </Link>
             <button
               onClick={() => setShowPaywall(false)}
-              aria-label="Close paywall and continue"
-              className="text-stone-500 hover:text-stone-400 text-sm transition-colors"
+              aria-label="ペイウォールを閉じる"
+              className="text-stone-500 hover:text-stone-400 text-sm transition-colors min-h-[44px]"
             >
-              Maybe later
+              また今度
             </button>
           </div>
         </div>
@@ -317,7 +322,7 @@ export default function ChatPage() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={canChat ? "Tell me what's on your mind..." : "Upgrade to continue..."}
+            placeholder={canChat ? "悩んでいることを話してください..." : "プレミアムにアップグレードして続ける..."}
             aria-label="LifeCompass AIに相談内容を入力する"
             disabled={loading || !canChat}
             rows={1}
@@ -335,11 +340,11 @@ export default function ChatPage() {
             aria-label="メッセージを送信する"
             className="bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed text-stone-950 font-bold px-5 py-3 rounded-xl transition-colors flex-shrink-0"
           >
-            Send
+            送信
           </button>
         </div>
         <p className="text-center text-stone-700 text-xs mt-2">
-          LifeCompass is not a substitute for professional therapy, medical, or legal advice.
+          LifeCompass AIは医療・法律・メンタルヘルス専門家の代替ではありません。
         </p>
       </div>
     </div>

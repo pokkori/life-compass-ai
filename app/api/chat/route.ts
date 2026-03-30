@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 export const dynamic = "force-dynamic";
 
-const FREE_LIMIT = 3;
+const FREE_LIMIT = 5;
 const COOKIE_KEY = "lifecompass_msg_count";
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();

@@ -31,7 +31,7 @@ function SuccessContent() {
   if (checking) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-stone-400 animate-pulse">Verifying your payment...</div>
+        <div className="text-stone-400 animate-pulse">決済を確認中...</div>
       </div>
     );
   }
@@ -55,19 +55,19 @@ function SuccessContent() {
           )}
         </div>
         <h1 className="text-3xl font-bold mb-4">
-          {verified ? "Welcome to Premium!" : "Something went wrong"}
+          {verified ? "プレミアムプランへようこそ！" : "エラーが発生しました"}
         </h1>
         <p className="text-stone-400 mb-8">
           {verified
-            ? "Your subscription is active. You now have unlimited conversations with LifeCompass AI."
-            : "We couldn't verify your payment. Please contact support if you were charged."}
+            ? "サブスクリプションが有効になりました。LifeCompass AIを無制限にご利用いただけます。"
+            : "決済の確認ができませんでした。請求された場合はサポートまでご連絡ください。"}
         </p>
         <Link
           href="/chat"
           aria-label={verified ? "チャットを開始してLifeCompass AIを無制限に使う" : "チャットページに戻る"}
-          className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold px-8 py-4 rounded-full transition-colors"
+          className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold px-8 py-4 rounded-full transition-colors inline-block"
         >
-          {verified ? "Start your unlimited journey →" : "Back to chat"}
+          {verified ? "無制限の思考整理を始める →" : "チャットに戻る"}
         </Link>
       </div>
     </div>
@@ -76,7 +76,7 @@ function SuccessContent() {
 
 export default function SuccessPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-stone-400">Loading...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-stone-400">読み込み中...</div>}>
       <SuccessContent />
     </Suspense>
   );
