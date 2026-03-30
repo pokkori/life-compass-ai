@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ShareButtons } from "@/components/ShareButtons";
+import { AdBanner } from "@/components/AdBanner";
 
 const SCENARIO_ICONS = [
   // Briefcase icon for Career
@@ -250,19 +252,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* X Share */}
+      {/* Share Section */}
       <section className="px-6 py-10 text-center">
-        <p className="text-stone-500 text-sm mb-3">思考整理が必要な人にLifeCompass AIをシェアする</p>
-        <a
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("LifeCompass AIで人生の決断を整理中。ソクラテス式AIが答えを出すのではなく「適切な問い」で思考をクリアにしてくれる。1日5回無料 → https://lifecompass-ai.vercel.app #LifeCompassAI #人生相談 #思考整理")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LifeCompass AIをXにシェアする"
-          className="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-stone-100 border border-stone-700 px-5 py-3 rounded-xl text-sm font-semibold transition-colors"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Xにシェアする
-        </a>
+        <p className="text-stone-500 text-sm mb-3">Share LifeCompass AI with someone who needs clarity</p>
+        <ShareButtons url="https://lifecompass-ai.vercel.app" text="I tried LifeCompass AI!" hashtags="LifeCompassAI" />
       </section>
 
       {/* Footer */}
@@ -271,9 +264,11 @@ export default function HomePage() {
           <Link href="/terms" aria-label="利用規約を見る" className="hover:text-stone-400 transition-colors">Terms of Service</Link>
           <Link href="/privacy" aria-label="プライバシーポリシーを見る" className="hover:text-stone-400 transition-colors">Privacy Policy</Link>
           <Link href="/legal" aria-label="特定商取引法に基づく表記を見る" className="hover:text-stone-400 transition-colors">特定商取引法に基づく表記</Link>
+          <Link href="/cancel" aria-label="Cancel subscription" className="hover:text-stone-400 transition-colors">Cancel</Link>
         </div>
         <p>© 2026 LifeCompass AI. Not a substitute for professional medical, legal, or financial advice.</p>
       </footer>
+      <AdBanner slot="" />
     </main>
   );
 }

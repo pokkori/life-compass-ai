@@ -89,7 +89,20 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-stone-100 mb-3">8. Contact</h2>
+          <h2 className="text-xl font-semibold text-stone-100 mb-3">8. External data transmission (Japan Telecommunications Business Act)</h2>
+          <p className="text-stone-400 mb-3">In compliance with Japan&apos;s external transmission regulations, this service transmits data to the following third-party services:</p>
+          <table className="w-full text-left text-xs text-stone-400">
+            <thead><tr className="border-b border-stone-600"><th className="py-2 pr-2">Recipient</th><th className="py-2 pr-2">Purpose</th><th className="py-2">Data transmitted</th></tr></thead>
+            <tbody>
+              <tr className="border-b border-stone-700"><td className="py-2 pr-2">Anthropic (Claude API)</td><td className="py-2 pr-2">AI response generation</td><td className="py-2">User conversation text</td></tr>
+              <tr className="border-b border-stone-700"><td className="py-2 pr-2">Stripe, Inc.</td><td className="py-2 pr-2">Payment processing</td><td className="py-2">Payment details</td></tr>
+              <tr><td className="py-2 pr-2">Vercel Inc.</td><td className="py-2 pr-2">Hosting &amp; analytics</td><td className="py-2">Page views, device info</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-stone-100 mb-3">9. Contact</h2>
           <p className="text-stone-400">
             For privacy questions: <a href="mailto:support@lifecompassai.com" className="text-amber-400 hover:underline">support@lifecompassai.com</a>
           </p>

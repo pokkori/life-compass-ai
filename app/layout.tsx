@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAdScript } from "@/components/GoogleAdScript";
 import "./globals.css";
 
 const SITE_URL = "https://lifecompass-ai.vercel.app";
@@ -131,7 +132,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       </head>
-      <body className="bg-stone-950 text-stone-100 antialiased">{children}</body>
+      <body className="bg-stone-950 text-stone-100 antialiased">{children}<GoogleAdScript /></body>
     </html>
   );
 }
