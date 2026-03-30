@@ -3,6 +3,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import { AdBanner } from "@/components/AdBanner";
 import { StreakBanner } from "@/components/StreakBanner";
 import { UsageCounter } from "@/components/UsageCounter";
+import { CrossSell } from "@/components/CrossSell";
 
 const SCENARIO_ICONS = [
   // Briefcase icon for Career
@@ -105,8 +106,9 @@ export default function HomePage() {
               boxShadow: '0 0 25px rgba(245, 158, 11, 0.4), 0 4px 15px rgba(0,0,0,0.3)',
             }}
           >
-            今すぐ考える — 無料
+            無料でAIに人生相談
           </Link>
+          <p className="text-xs opacity-60 mt-2">※登録不要・匿名OK</p>
           <Link
             href="#how"
             aria-label="使い方の詳細を見る"
@@ -310,6 +312,8 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
+      <CrossSell currentService="LifeCompassAI" />
+
       <footer className="px-6 py-8 border-t border-stone-800 text-center text-stone-600 text-sm">
         <div className="flex flex-wrap justify-center gap-4 mb-3">
           <Link href="/terms" aria-label="利用規約を見る" className="hover:text-stone-400 transition-colors">Terms of Service</Link>
