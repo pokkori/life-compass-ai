@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAdScript } from "@/components/GoogleAdScript";
+import OrbBackground from "@/components/OrbBackground";
 import "./globals.css";
 import { InstallPrompt } from "@/components/InstallPrompt";
 
@@ -143,7 +144,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       </head>
-      <body className="bg-stone-950 text-stone-100 antialiased">{children}<InstallPrompt /><Analytics /><SpeedInsights /><GoogleAdScript /></body>
+      <body className="bg-stone-950 text-stone-100 antialiased">
+        <OrbBackground />
+        <div style={{ position: "relative", zIndex: 1 }}>{children}</div>
+        <InstallPrompt /><Analytics /><SpeedInsights /><GoogleAdScript />
+      </body>
     </html>
   );
 }
